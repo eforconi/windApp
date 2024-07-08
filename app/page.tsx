@@ -1,9 +1,9 @@
 import Image from "next/image";
+import Instructors from "./instructors/page";
 
 export default function Home() {
   return (
-    <div>
-      <h1>Hello world</h1>
-    </div>
+    <Instructors>
+      </Instructors>
   );
 }
