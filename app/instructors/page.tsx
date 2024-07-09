@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Instructor } from "../lib/definitions";
-import styles from './instructor.module.css';
-import CreateInstructor from "./CreateInstructor";
+import Image from 'next/image'
+
 
 async function getInstructors() {
     const response = await fetch('http://127.0.0.1:8090/api/collections/instructors/records?page=1&perPage=30', { cache: 'no-store' });
@@ -30,14 +30,14 @@ export default async function Instructors() {
   );
 
     function Instructor({ index, id, name, discipline, price_per_hour }: Instructor & {index:number}) {
-        const image: string = index + '.jpeg';
+        const image: string = '/'+index + '.jpeg';
         return (
-            <div className="w-1/2 lg:w-1/3 p-4 h-1/6">
+            <div className="w-1/2 lg:w-1/3 p-4 h-3/6">
                 <div className="border rounded-lg overflow-hidden shadow-lg">
                     <Link href={`/instructors/${id}`}>
-                        <div className="block h-1/6">
-                            <div className="relative">
-                                <img src={image} alt={`Instructor ${index}`} className="w-full object-scale-down" loading="lazy" />
+                        <div className="block">
+                            <div className="relative min-h-28">
+                                <Image src={image} fill={true} alt={`Instructor ${index}`} loading="lazy" />
                             </div>
                             <div className="p-4">
                                 <h2 className="text-lg font-bold">{name}</h2>
